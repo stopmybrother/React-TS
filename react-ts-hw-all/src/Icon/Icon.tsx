@@ -1,30 +1,54 @@
 import React from "react";
-// import styled, {css} from "styled-components";
-//
-// interface IIconProps {
-//     name: string;
-//     className: string;
-//     size: number;
-//     onClick: (e: React.MouseEvent<HTMLElement>) => void;
-//     disabled: boolean;
-// };
-//
-// export const Icon = ({
-//                          name = "",
-//                          className = "",
-//                          size = 0,
-//                          onClick = function (e: React.MouseEvent<HTMLElement>) {},
-//                          disabled = false,
-//                      }: IIconProps) => {
-//     const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-//         e.preventDefault();
-//         console.log("Click");
-//         return onClick(e);
-//     };
-//     return (
-//         <i name = {name} className = {className} size = {size} onClick = {handleClick} disabled = {disabled}></i>
-//     )
-// };
+import styled, {css} from "styled-components";
+
+interface IIconProps {
+    name: string;
+    className: string;
+    size: number;
+    onClick: (e: React.MouseEvent<HTMLElement>) => void;
+    disabled: boolean;
+};
+
+const StyledNonUsableButton = styled.button`
+    cursor: pointer;
+    ${props => props.disabled && css`
+      cursor: default;
+    `}
+`
+
+const StyledIcon = styled.i`
+  padding: 33px 30px;
+  position: relative;
+  &:before {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+`
+
+export const Icon = ({
+                         name = "",
+                         className = "",
+                         size = 0,
+                         onClick = function (e: React.MouseEvent<HTMLElement>) {},
+                         disabled = false,
+                     }: IIconProps) => {
+    const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+        if (disabled) {
+            e.preventDefault();
+        } else {
+            console.log("Click");
+            return onClick(e);
+        }
+    };
+    return (
+        <StyledNonUsableButton disabled={disabled} onClick = {handleClick} >
+            <StyledIcon className = {`${className}${name}`} style={{fontSize: size}}></StyledIcon>
+        </StyledNonUsableButton>
+    )
+};
 
 
 
