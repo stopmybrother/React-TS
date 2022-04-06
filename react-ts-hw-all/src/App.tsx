@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import styled, { css } from 'styled-components';
 import { Button } from './Button/Button';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
-// import { Icon } from './Icon/Icon';
+import { Icon } from './Icon/Icon';
 // import { Checkbox } from './Checkbox/Checkbox';
 
 
@@ -39,13 +39,13 @@ function App() {
               className = { "btnGroup" }
           />
 
-          {/* <Icon
-          name = { "otter" }
-          className = { "fa-solid fa-otter" }
-          size = { 5 }
-          onClick = {function (e: React.MouseEvent<HTMLElement>) {}}
-          disabled = { false }
-        /> */}
+          <Icon
+              name = { "kiwi-bird" }
+              className = { "fa fa-" }
+              size = { 50 }
+              onClick = {function (e: React.MouseEvent<HTMLElement>) {}}
+              disabled = { false }
+          />
 
           {/* <Checkbox
           label = "value"
