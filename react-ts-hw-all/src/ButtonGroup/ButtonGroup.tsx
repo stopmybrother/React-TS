@@ -8,7 +8,7 @@ interface IBtnGroupProps {
 };
 
 const FlexBox = styled.div`
-    margin: 0 auto;
+    margin: 0 auto 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
