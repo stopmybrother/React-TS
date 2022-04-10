@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 interface IIconProps {
     name: string;
@@ -7,18 +7,22 @@ interface IIconProps {
     size: number;
     onClick: (e: React.MouseEvent<HTMLElement>) => void;
     disabled: boolean;
+    borderRadius?: number
 };
 
-const StyledNonUsableButton = styled.button`
-    cursor: pointer;
-    ${props => props.disabled && css`
-      cursor: default;
-    `}
+const Container = styled.div`
+  margin: 0 auto;
+  padding: 0 16px;
 `
 
-const StyledIcon = styled.i`
-  padding: 33px 30px;
+const IconSmall = styled.i<IIconProps>`
+  padding: 45px;
   position: relative;
+  border: 1px solid ${ p => p.theme.colors.black };
+  border-radius: ${ p => p.borderRadius }%;
+  background-color: ${ p => p.theme.colors.primaryOrange };
+  font-size: ${ p => p.size }px;
+  transition: all 0.3s linear;
   &:before {
     position: absolute;
     display: inline-block;
@@ -26,40 +30,44 @@ const StyledIcon = styled.i`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  &:hover {
+    background-color: ${ p => p.theme.colors.hoverOrange };
+  }
+  &:active {
+    background-color: ${ p => p.theme.colors.activeOrange };
+  }
+  &.disable {
+    cursor: default;
+    background-color: ${ p => p.theme.colors.disabledOrange };
+  }
 `
 
 export const Icon = ({
                          name = "",
                          className = "",
                          size = 0,
-                         onClick = function (e: React.MouseEvent<HTMLElement>) {},
+                         onClick = () => {},
                          disabled = false,
                      }: IIconProps) => {
-    const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-        if (disabled) {
+
+    const handleClick = ( e: React.MouseEvent<HTMLElement> ) => {
+        if ( disabled ) {
             e.preventDefault();
         } else {
-            console.log("Click");
-            return onClick(e);
+            console.log( "Click" );
+            return onClick( e );
         }
     };
     return (
-        <StyledNonUsableButton disabled={disabled} onClick = {handleClick} >
-            <StyledIcon className = {`${className}${name}`} style={{fontSize: size}}></StyledIcon>
-        </StyledNonUsableButton>
+        <Container>
+            <IconSmall
+                name = { name }
+                className = { disabled ? `${ className }${ name } disable` : `${ className }${ name }` }
+                onClick = { handleClick }
+                size = { size }
+                borderRadius = { 50 }
+                disabled = { disabled }>
+            </IconSmall>
+        </Container>
     )
 };
-
-
-
-// 4. Создать кастомный компонент для иконки (Icon), который может принимать в себя следующие пропсы:
-// name - берется из fontawesome.com (string, default: ''), при этом имя класса формируется по принципу `fa fa-${name}` - тк так fontawesome понимает, какую иконку надо использовать
-// className - доп класс для стилизации (string, default: ''),
-// size - размер иконки: (number, 0),
-// onClick - обработчик события при нажатии - выполняется при нажатии кнопки (event, default: () => {}),
-// disabled - бледная иконка, на которую нельзя нажать: (boolean, false)
-// NB!: иконка обозначается через <i>
-// иконки берутся из следующего источника (прописываем в index.html в public)
-// <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-// пример:
-// https://www.w3schools.com/icons/#:~:text=Try%20It%20Yourself%20%C2%BB-,Font%20Awesome%204%20Icons,-To%20use%20the (второй пример)
