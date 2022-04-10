@@ -2,98 +2,96 @@ import React from "react";
 // import { useState } from "react";
 // import styled, { keyframes } from "styled-components";
 //
-// const StyledInput = styled.input`
-//     height: 0;
-//     width: 0;
-//     opacity: 0;
-//     z-index: -1;
+// interface ICheckbox {
+//     type: string;
+//     checked: boolean;
+//     disabled: boolean;
+//     id?: string;
+//     // onChange: (e: React.MouseEvent<HTMLFormElement>) => void;
+// }
+//
+// const Container = styled.div`
+//   margin: 0 auto;
+//   padding: 0 16px;
+// `
+//
+// const Icon = styled.svg`
+//   fill: none;
+//   stroke: ${ p => p.theme.colors.white };
+//   stroke-width: 2px;
+// `
+//
+// const HiddenCheckbox = styled.input.attrs( { type: "checkbox" } )<ICheckbox>`
+//   margin: -1px;
+//   padding: 0;
+//   width: 1px;
+//   height: 1px;
+//   position: absolute;
+//   clip: rect(0 0 0 0);
+//   clip-path: inset(50%);
+//   overflow: hidden;
+//   white-space: nowrap;
+//   border: 0;
 // `;
 //
-// const StyledLabel = styled.label`
-//     position: relative;
-//     display: inline-block;
-//     cursor: ${props => props.disabled ? "not-allowed" : "pointer"};
-//     margin: 0 auto;
+// const InputCheckbox = styled.input.attrs( { type: "checkbox" } )<ICheckbox>`
+//   display: inline-block;
+//   width: 16px;
+//   height: 16px;
+//   background-color: ${ p => p.checked ? p.theme.colors.primaryYellow : p.theme.colors.lightYellow };
+//   border-radius: 3px;
+//   transition: all 0.15s linear;
+//
+//   ${ HiddenCheckbox }:focus + & {
+//     box-shadow: 0 0 0 3px ${ p => p.theme.colors.lightGray };
+//   }
+//
+//   ${ Icon } {
+//     visibility: ${ p => p.checked ? "visible" : "hidden" };
+//   }
 // `;
 //
-// const CheckboxRotate = keyframes`
-//     from {
-//         opacity: 0;
-//         transform: rotate(0deg);
-//     }
-//     to {
-//         opacity: 1;
-//         transform: rotate(45deg);
-//     }
-// `;
-//
-// const StyledIndicator = styled.div`
-//     width: 20px;
-//     height: 20px;
-//     background-color: #e6e6e6;
-//     position: absolute;
-//     top: 0;
-//     left: -30px;
-//     border: 1px solid #757575;
-//     border-radius: 3px;
-//
-//     ${StyledInput}:not(:disabled):checked & {
-//         background-color: #d1d1d1;
-//     }
-//
-//     ${StyledLabel}:hover & {
-//         background-color: #ccc;
-//     }
-//
-//     &::after {
-//         content: "";
-//         position: absolute;
-//         display: none;
-//     }
-//
-//     ${StyledInput}:checked + &::after {
-//         display: block;
-//         top: 0;
-//         left: 5px;
-//         width: 35%;
-//         height: 70%;
-//         border: solid #263238;
-//         border-width: 0 3px 3px 0;
-//         animation-name: ${CheckboxRotate};
-//         animation-duration: 0.3s;
-//         animation-fill-mode: forwards;
-//     }
-//
-//     &::disabled {
-//         cursor: not-allowed;
-//     }
-// `;
+// const Label = styled.label
+// const Span = styled.span`
+//   margin-left: 8px;
+// `
 //
 // export const Checkbox = ({
-//                              value,
-//                              checked,
-//                              onChange,
-//                              name,
-//                              id,
-//                              label,
-//                              disabled
-//                          }) => {
+//                              type = "",
+//                              checked = false,
+//                              disabled = false,
+//                              id = ""
+//                              // onChange = () => {},
+//                          }: ICheckbox) => {
+//
+//     // const changeStateCheckbox = (e: React.MouseEvent<HTMLFormElement>) => {
+//     //     if ( disabled ) {
+//     //         e.preventDefault();
+//     //     } else {
+//     //         console.log( "Click" );
+//     //         return onChange( e );
+//     //     }
+//     // }
+//
 //     return (
-//         <StyledLabel
-//             htmlFor = {id}
-//             disabled = {disabled}
-//         >
-//             { label }
-//             <StyledInput
-//                 id = {id}
-//                 type = "checkbox"
-//                 name = {name}
-//                 value = {value}
-//                 disabled = {disabled}
-//                 checked = {checked}
-//                 onChange = {onChange}
-//             />
-//             <StyledIndicator />
-//         </StyledLabel>
+//         <>
+//             <Container>
+//                 <Label for = { id }>
+//                     <HiddenCheckbox type = { type } checked = { checked } disabled = { disabled } />
+//                     <InputCheckbox
+//                         type = { type }
+//                         checked = { checked }
+//                         disabled = { disabled }
+//                         id = {id}
+//                         // onChange = { changeStateCheckbox }
+//                     >
+//                         <Icon viewBox = "0 0 24 24">
+//                             <polyline points = "20 6 9 17 4 12"/>
+//                         </Icon>
+//                     </InputCheckbox>
+//                 </Label>
+//             </Container>
+//         </>
 //     )
 // }
+
