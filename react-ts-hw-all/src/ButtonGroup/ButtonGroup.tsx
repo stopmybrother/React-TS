@@ -1,39 +1,50 @@
-import React, { Children } from "react";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 
+interface IFlexBoxProps {
+    flexDirection?: string;
+    justifyContent?: string;
+    alignItems?: string;
+}
+
+interface IBtnProps {
+    borderRadius?: number;
+}
 interface IBtnGroupProps {
     vertical?: boolean;
-    children: string | null;
+    children: React.ReactNode | null;
     className: string;
+    numberOfButtons: number[];
 };
 
-const FlexBox = styled.div`
-    margin: 0 auto 30px;
+const FlexBox = styled.div<IFlexBoxProps>`
+    margin: 0 auto 50px;
+    padding: 0 16px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: ${ p => p.flexDirection };
+    justify-content: ${ p => p.justifyContent };
+    align-items: ${ p => p.alignItems };
     row-gap: 15px;
 `
-const StyledBtn = styled.button`
-    display: block;
+const Button = styled.button<IBtnProps>`
     max-width: 118px;
     width: 100%;
     padding: 47px 35px;
-    border: 1px solid #000;
-    border-radius: 50%;
-    background-color: rgb(214, 102, 216);
-    color: rgba($color: #000000, $alpha: .5);
+    border: 1px solid ${ p => p.theme.colors.black };
+    border-radius: ${ p => p.borderRadius }%;
+    background-color: ${ p => p.theme.colors.primaryPink };
+    color: ${ p => p.theme.colors.translucentBlack };
     font-size: 16px;
     line-height: 20px;
-    text-transform: uppercase;
-    cursor: pointer;
     transition: 0.3s linear;
 
     &:hover:enabled {
-        background-color: rgb(222, 138, 224);
+        background-color: ${ p => p.theme.colors.hoverPink };
+        color: ${ p => p.theme.colors.black };
     }
     &:active:enabled {
-        background-color: rgb(218, 62, 221);
+        background-color: ${ p => p.theme.colors.activePink };
+        color: ${ p => p.theme.colors.black };
     }
 `
 
@@ -41,22 +52,28 @@ export const ButtonGroup = ({
                                 vertical = false,
                                 children = null,
                                 className = "",
+                                numberOfButtons = []
                             }: IBtnGroupProps) => {
+
+    const Buttons = numberOfButtons.map( number => {
+        return (
+            <Button borderRadius={50}>{children} {number}</Button>
+            )
+        }
+    );
+
     return (
         <>
             <FlexBox
-                style = {vertical ? {flexDirection: 'column'} : {flexDirection: 'row'}}
-                className={className}
+                className = { className }
+                flexDirection = { vertical ? "column" : "row" }
+                justifyContent = { "space-between" }
+                alignItems = { "center" }
             >
-                <StyledBtn className={`${className} ${"item"}`}>{`${children} 1`}</StyledBtn>
-                <StyledBtn className={`${className} ${"item"}`}>{`${children} 2`}</StyledBtn>
-                <StyledBtn className={`${className} ${"item"}`}>{`${children} 3`}</StyledBtn>
+
+                { Buttons }
+
             </FlexBox>
         </>
     )
 };
-
-// Создать кастомный компонент группы кнопок (ButtonGroup), который может принимать в себя следующие пропсы
-// vertical (boolean, default: false)
-// children - в данном случае группа кнопок, помещенная во wrapper ButtonGroup для них (node, default: null)
-// className (string, default: '')
