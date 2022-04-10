@@ -1,60 +1,58 @@
-import React, {useState} from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+
+import styled from 'styled-components';
+import { COLOR } from "./styled-components/color-constants";
+
 import { Button } from './Button/Button';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
-// import { Checkbox } from './Checkbox/Checkbox';
+// import { Checkbox } from "./Checkbox/Checkbox";
 
+interface IWrapper {
+    backGroundColor?: string;
+}
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<IWrapper>`
   max-width: 100%;
   min-height: 100vh;
   padding: 100px;
-  background-color: rgb(170, 241, 218);
+  background-color: ${ p => p.backGroundColor };
 `
-const Container = styled.div`
-  margin: 0 auto;
-  padding: 0 16px;
-  max-width: 500px;
-  width: 100%;
-`
-
-function App() {
-  // const [value, setCheckbox] = useState(true);
+const App = () => {
   return (
-      <Wrapper>
-        <Container>
+      <Wrapper backGroundColor = { COLOR.magicMint }>
           <Button
-              active={false}
-              children={"Click me !"}
-              className={"btn"}
-              disabled={false}
-              href={"#"}
-              onClick={function (e: React.MouseEvent<HTMLButtonElement>) {}}
-              type={"button"} />
+              active = { false }
+              children = "Click me !"
+              className = "btn"
+              disabled = { false }
+              href = "#"
+              onClick = { (e: React.MouseEvent<HTMLButtonElement>) => {} }
+              type = "button" />
 
           <ButtonGroup
-              vertical = { true }
-              children = { "btn" }
-              className = { "btnGroup" }
+              vertical = { false }
+              children = "btn"
+              className = "btnGroup"
+              numberOfButtons ={ [1, 2, 3] }
           />
 
           <Icon
-              name = { "kiwi-bird" }
-              className = { "fa fa-" }
+              name = "kiwi-bird"
+              className = "fa fa-"
               size = { 50 }
-              onClick = {function (e: React.MouseEvent<HTMLElement>) {}}
+              onClick = { (e: React.MouseEvent<HTMLElement>) => {} }
               disabled = { false }
           />
 
-          {/* <Checkbox
-          label = "value"
-          value = {value}
-          checked = {value}
-          onChange = {({target}) => setCheckbox(!value)}
-        /> */}
+        {/*   <Checkbox*/}
+        {/*      type = "checkbox"*/}
+        {/*      checked = { false }*/}
+        {/*      disabled = { false }*/}
+        {/*      id = "checkbox"*/}
+        {/*      // onChange = { (e: React.MouseEvent<HTMLInputElement>) => {} }*/}
+        {/*/>*/}
 
-        </Container>
       </Wrapper>
   );
 }
