@@ -11,7 +11,7 @@ interface IIconProps {
 };
 
 const Container = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 50px;
   padding: 0 16px;
 `
 
