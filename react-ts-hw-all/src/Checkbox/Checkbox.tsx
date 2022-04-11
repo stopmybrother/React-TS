@@ -1,4 +1,44 @@
 import React from "react";
+// import { animated, useSpring } from "react-spring"
+
+import "./Checkbox.css";
+import { useState } from "react";
+
+export const Checkbox = () => {
+    const [isChecked, setIsChecked] = useState( false );
+    // const checkboxAnimationStyle = useSpring( {
+    //     backgroundColor: isChecked ? "#808" : "#fff",
+    //     borderColor: isChecked ? "#808" : "fff",
+    // } )
+
+    return (
+        <label>
+            <input
+                type = "checkbox"
+                onChange = {
+                    () => {
+                        setIsChecked( !isChecked );
+                    }
+                }
+            />
+            <svg
+                // style = { checkboxAnimationStyle }
+                className = { `checkbox ${ isChecked ? "checkbox--active" : "" }` }
+                aria-hidden = { true }
+                viewBox = "0 0 15 11"
+                fill = "none"
+            >
+                <path
+                    d = "M1 4.5L5 9L14 1"
+                    strokeWidth ={ 2 }
+                    stroke = { isChecked? "#fff" : "none" }
+                />
+            </svg>
+            bla bla
+        </label>
+    )
+}
+
 // import { useState } from "react";
 // import styled, { keyframes } from "styled-components";
 //
