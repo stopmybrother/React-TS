@@ -7,6 +7,8 @@ import { Button } from './Button/Button';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
 // import { Checkbox } from "./Checkbox/Checkbox";
+import { CheckboxComp } from "./CheckboxTrial/CheckboxTry";
+import { Image } from "./Image/Image";
 
 interface IWrapper {
     backGroundColor?: string;
@@ -52,6 +54,20 @@ const App = () => {
         {/*      id = "checkbox"*/}
         {/*      // onChange = { (e: React.MouseEvent<HTMLInputElement>) => {} }*/}
         {/*/>*/}
+
+             <CheckboxComp
+                checked = { false }
+                onChange = { (e: React.ChangeEvent<HTMLInputElement>) => {} }
+          />
+
+          <Image
+              className = "image"
+              src = "./Image/svg/Stitch-sit.png"
+              alt = "Stitch"
+              width = { 150 }
+              height = { 150 }
+              circle = { true }
+          />
 
       </Wrapper>
   );
