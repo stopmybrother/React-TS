@@ -1,4 +1,5 @@
 import React from 'react';
+// import { animated, useSpring } from "react-spring"
 
 import styled from 'styled-components';
 import { COLOR } from "./styled-components/color-constants";
@@ -6,8 +7,8 @@ import { COLOR } from "./styled-components/color-constants";
 import { Button } from './Button/Button';
 import { ButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
-// import { Checkbox } from "./Checkbox/Checkbox";
-import { CheckboxComp } from "./CheckboxTrial/CheckboxTry";
+import { Checkbox } from "./Checkbox/Checkbox";
+//import { CheckboxComp } from "./CheckboxTrial/CheckboxTry";
 import { Image } from "./Image/Image";
 
 interface IWrapper {
@@ -55,10 +56,14 @@ const App = () => {
         {/*      // onChange = { (e: React.MouseEvent<HTMLInputElement>) => {} }*/}
         {/*/>*/}
 
-             <CheckboxComp
-                checked = { false }
-                onChange = { (e: React.ChangeEvent<HTMLInputElement>) => {} }
+             <Checkbox
+
           />
+
+          {/*   <CheckboxComp*/}
+          {/*      checked = { false }*/}
+          {/*      onChange = { (e: React.ChangeEvent<HTMLInputElement>) => {} }*/}
+          {/*/>*/}
 
           <Image
               className = "image"
