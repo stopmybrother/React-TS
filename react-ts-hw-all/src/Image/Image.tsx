@@ -1,58 +1,57 @@
 import React from "react";
 
-import styled, { css } from "styled-components";
-import { COLOR } from "../styled-components/color-constants";
+import styled from "styled-components";
 
-interface IImageProps {
-    className: string;
-    src?: string;
+interface IImageTagProps {
     alt: string;
-    width: number;
+    className: string;
     height: number;
-    circle: boolean;
-}
+    src: string;
+    width: number;
+};
+
+interface IImageComponentProps {
+    alt: string;
+    circle?: boolean;
+    className: string;
+    height: number;
+    src: string;
+    width: number;
+};
 
 const Container = styled.div`
   margin: 0 auto 50px;
   padding: 0 16px;
-`
+`;
 
-const Img = styled.img`
+const Img = styled.img<IImageTagProps>`
   width: ${ p => p.width }px;
   height: ${ p => p.height }px;
   
   &.rounded {
     border-radius: 50%;
   }
-`
+`;
 
 export const Image = ({
-                        className = "",
-                        src = "",
                         alt = "image",
-                        width = 100,
-                        height = 100,
                         circle = false,
-                      }: IImageProps) => {
+                        className = "",
+                        height = 100,
+                        src = "",
+                        width = 100,
+                      }: IImageComponentProps) => {
     return (
         <Container>
             <Img
-                className = { `${className} ${circle ? "rounded" : ""}` }
-                src = { src }
                 alt = { alt }
-                width = { width }
+                className = { `${ className } ${ circle ? "rounded" : "" }` }
                 height = { height }
+                src = { src }
+                width = { width }
             >
 
             </Img>
         </Container>
     )
-}
-
-// 5. Создать кастомный компонент для картинки(Image), который может принимать в себя следующие пропсы:
-// src - путь к картинке (string, default: ''),
-// alt - alt картинки (string, default: 'image'),
-// width - ширина картинки (number, default: 100),
-// height - высота картинки (number, default: 100),
-// circle - будет ли картинка круглой (number, default: false) - делается через доп класс как active в кнопке,
-// className - доп класс для стилизации (string, default: ''),
+};
