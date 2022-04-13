@@ -41,6 +41,14 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     cursor: pointer;
   }
+  
+  input {
+    cursor: pointer;
+  }
+  
+  label {
+    cursor: pointer;
+  }
 `
 
 ReactDOM.render(
