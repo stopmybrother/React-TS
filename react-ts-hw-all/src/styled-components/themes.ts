@@ -2,6 +2,11 @@ export const themes = {
     colors: {
         black: "#000",
         translucentBlack: "#0000007F",
+        translucentBlackThirty: "#0000004C",
+
+        primaryGray: "#333330",
+        secondaryGray: "#50504b",
+        lightGray: "#7c7c6e",
 
         white: "#FFF",
 
@@ -25,10 +30,9 @@ export const themes = {
         activeOrange: "#ec841e",
         disabledOrange: "#817d79",
 
-        primaryYellow: "#e3ea47",
-        lightYellow: "#E6EA7DFF",
-
-        lightGray: "#777777",
+        primaryYellow: "#eee31d",
+        secondaryYellow: "#eee353",
+        lightYellow: "#f3ee91",
     },
 
     media: {
