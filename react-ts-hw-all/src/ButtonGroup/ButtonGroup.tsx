@@ -1,21 +1,26 @@
 import React from "react";
+
 import styled from "styled-components";
 
-interface IFlexBoxProps {
-    flexDirection?: string;
-    justifyContent?: string;
-    alignItems?: string;
-}
 
-interface IBtnProps {
-    borderRadius?: number;
-}
-interface IBtnGroupProps {
-    vertical?: boolean;
-    children: React.ReactNode | null;
+interface IFlexBoxProps {
+    alignItems: string;
     className: string;
-    numberOfButtons: number[];
+    flexDirection: string;
+    justifyContent: string;
 };
+
+interface IButtonTagProps {
+    borderRadius: number;
+    className: string;
+};
+
+interface IButtonGroupComponentProps {
+    vertical?: boolean;
+    children: React.ReactNode[] | null;
+    className: string;
+};
+
 
 const FlexBox = styled.div<IFlexBoxProps>`
     margin: 0 auto 50px;
@@ -25,8 +30,9 @@ const FlexBox = styled.div<IFlexBoxProps>`
     justify-content: ${ p => p.justifyContent };
     align-items: ${ p => p.alignItems };
     row-gap: 15px;
-`
-const Button = styled.button<IBtnProps>`
+`;
+
+const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     max-width: 118px;
     width: 100%;
     padding: 47px 35px;
@@ -46,18 +52,23 @@ const Button = styled.button<IBtnProps>`
         background-color: ${ p => p.theme.colors.activePink };
         color: ${ p => p.theme.colors.black };
     }
-`
+`;
+
 
 export const ButtonGroup = ({
                                 vertical = false,
                                 children = null,
                                 className = "",
-                                numberOfButtons = []
-                            }: IBtnGroupProps) => {
+                            }: IButtonGroupComponentProps) => {
 
-    const Buttons = numberOfButtons.map( number => {
+    const Buttons = children !== null && children.map( ( button, index ) => {
         return (
-            <Button borderRadius={50}>{children} {number}</Button>
+            <ButtonInButtonGroup
+                borderRadius = { 50 }
+                className = { `${ className } btn` }
+            >
+                btn { index + 1 }
+            </ButtonInButtonGroup>
             )
         }
     );
@@ -70,9 +81,7 @@ export const ButtonGroup = ({
                 justifyContent = { "space-between" }
                 alignItems = { "center" }
             >
-
                 { Buttons }
-
             </FlexBox>
         </>
     )
