@@ -2,9 +2,23 @@ import React from "react";
 
 import styled, { css } from "styled-components";
 
-import { TButtonComponentStyle, TLink } from './button-types'
+import { TButtonComponentStyle, TLink } from './button-types';
 
-interface IBtnProps {
+
+interface IButtonTagProps {
+    borderRadius: number;
+    className: string;
+    disabled: boolean;
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    type: TButtonComponentStyle;
+};
+
+interface ILinkTagProps {
+    className: string;
+    href: string;
+};
+
+interface IButtonComponentProps {
     active?: boolean;
     children: string;
     className: string;
@@ -12,15 +26,15 @@ interface IBtnProps {
     href?: string;
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
     type: TButtonComponentStyle;
-    borderRadius?: number;
 };
 
-const Container = styled.div`
+
+const ContainerForBtnOrLink = styled.div`
   margin: 0 auto 50px;
   padding: 0 16px;
 `;
 
-const Btn = styled.button<IBtnProps>`
+const Btn = styled.button<IButtonTagProps>`
     margin: 0 auto;
     padding: 10px 50px;
     border: 1px solid ${ p => p.theme.colors.borderColor };
@@ -55,12 +69,12 @@ const Btn = styled.button<IBtnProps>`
         color: ${ p => p.theme.colors.black };
     }
 
-    ${props => props.disabled && css`
+    ${p => p.disabled && css`
         background-color: ${ p => p.theme.colors.disabledBlue };
     `}
 `;
 
-const Link = styled.a`
+const Link = styled.a<ILinkTagProps>`
     margin: 0 auto 50px;
     font-size: 32px;
     line-height: 28px;
@@ -87,15 +101,16 @@ const Link = styled.a`
     }
 `;
 
+
 export const Button = ( {
-                            className = "",
-                            children = "Default button",
                             active = false,
+                            children = "Default button",
+                            className = "",
                             disabled = false,
-                            onClick = () => {},
                             href = "#",
+                            onClick = () => {},
                             type = "button",
-                        }: IBtnProps ) => {
+                        }: IButtonComponentProps ) => {
 
     const handleClick = ( e: React.MouseEvent<HTMLButtonElement> ) => {
         if ( disabled ) {
@@ -110,23 +125,26 @@ export const Button = ( {
 
     return (
         <>
-            <Container>
+            <ContainerForBtnOrLink>
                 {isLink ? (
-                    <Link href = { href } className = { `${className} ${active ? "active" : ""}` }>
+                    <Link
+                        className = { `link ${active ? "active" : ""}` }
+                        href = { href }
+                    >
                         { children }
                     </Link>
                 ) : (
                     <Btn
+                        borderRadius = { 10 }
+                        className = { `${className} ${active ? "active" : ""}` }
                         disabled = { disabled }
                         onClick = { handleClick }
-                        className = { `${className} ${active ? "active" : ""}` }
                         type = { type as Exclude<TButtonComponentStyle, TLink> }
-                        borderRadius = { 10 }
                     >
                         { children }
                     </Btn>
                 )};
-            </Container>
+            </ContainerForBtnOrLink>
         </>
     );
 };
