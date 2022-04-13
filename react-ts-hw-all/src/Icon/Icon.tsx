@@ -1,21 +1,32 @@
 import React from "react";
-import styled from "styled-components";
 
-interface IIconProps {
+import styled, { css } from "styled-components";
+
+
+interface IIconTagProps {
+    borderRadius: number;
+    className: string;
+    disabled: boolean;
+    name: string;
+    onClick: (e: React.MouseEvent<HTMLElement>) => void;
+    size: number;
+};
+
+interface IIconComponentProps {
     name: string;
     className: string;
     size: number;
     onClick: (e: React.MouseEvent<HTMLElement>) => void;
-    disabled: boolean;
-    borderRadius?: number
+    disabled?: boolean;
 };
+
 
 const Container = styled.div`
   margin: 0 auto 50px;
   padding: 0 16px;
-`
+`;
 
-const IconSmall = styled.i<IIconProps>`
+const IconSmall = styled.i<IIconTagProps>`
   padding: 45px;
   position: relative;
   border: 1px solid ${ p => p.theme.colors.black };
@@ -36,10 +47,14 @@ const IconSmall = styled.i<IIconProps>`
   &:active {
     background-color: ${ p => p.theme.colors.activeOrange };
   }
-  &.disable {
+  
+  ${ p => p.disabled && css`
     cursor: default;
     background-color: ${ p => p.theme.colors.disabledOrange };
-  }
+        &:hover {
+          background-color: ${ p => p.theme.colors.disabledOrange };
+        }
+  ` };
 `
 
 export const Icon = ({
@@ -48,7 +63,7 @@ export const Icon = ({
                          size = 0,
                          onClick = () => {},
                          disabled = false,
-                     }: IIconProps) => {
+                     }: IIconComponentProps) => {
 
     const handleClick = ( e: React.MouseEvent<HTMLElement> ) => {
         if ( disabled ) {
@@ -62,7 +77,7 @@ export const Icon = ({
         <Container>
             <IconSmall
                 name = { name }
-                className = { disabled ? `${ className }${ name } disable` : `${ className }${ name }` }
+                className = { `${ className }${ name }` }
                 onClick = { handleClick }
                 size = { size }
                 borderRadius = { 50 }
