@@ -1,24 +1,23 @@
 import React from 'react';
-
 import styled from 'styled-components';
 import { COLOR } from "./styled-components/color-constants";
-
 import { Button } from './Button/Button';
-import { ButtonGroup } from './ButtonGroup/ButtonGroup';
+import { ButtonGroup, ButtonInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Image } from "./Image/Image";
 
 interface IWrapper {
     backGroundColor?: string;
-}
+};
 
 const Wrapper = styled.div<IWrapper>`
+  background-color: ${ p => p.backGroundColor };
   max-width: 100%;
   min-height: 100vh;
   padding: 100px;
-  background-color: ${ p => p.backGroundColor };
-`
+`;
+
 const App = () => {
   return (
       <Wrapper backGroundColor = { COLOR.magicMint }>
@@ -30,12 +29,10 @@ const App = () => {
               Click me !
           </Button>
 
-          <ButtonGroup
-              className = "btnGroup"
-          >
-              <button></button>
-              <button></button>
-              <button></button>
+          <ButtonGroup>
+              <ButtonInButtonGroup />
+              <ButtonInButtonGroup />
+              <ButtonInButtonGroup />
           </ButtonGroup>
 
           <Icon
@@ -45,20 +42,19 @@ const App = () => {
               onClick = { (e: React.MouseEvent<HTMLElement>) => {} }
           />
 
-             <Checkbox
-                 type = "checkbox"
+          <Checkbox
+              type = "checkbox"
           />
 
           <Image
               className = "image"
-              src = "..Image/svg/Stitch-sit.png" // src doesn't work :(
+              src = { require( "./../src/Image/svg/Stitch-sit.png" ) }
               alt = "Stitch"
               width = { 150 }
               height = { 150 }
           />
-
       </Wrapper>
   );
-}
+};
 
 export default App;
