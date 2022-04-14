@@ -1,9 +1,6 @@
 import React from "react";
-
 import styled, { css } from "styled-components";
-
 import { TButtonComponentStyle, TLink } from './button-types';
-
 
 interface IButtonTagProps {
     borderRadius: number;
@@ -28,7 +25,6 @@ interface IButtonComponentProps {
     type: TButtonComponentStyle;
 };
 
-
 const ContainerForBtnOrLink = styled.div`
   margin: 0 auto 50px;
   padding: 0 16px;
@@ -45,7 +41,7 @@ const Btn = styled.button<IButtonTagProps>`
     line-height: 28px;
 
     transition: 0.3s linear;
-    
+  
     &:hover:enabled {
         background-color: ${ p => p.theme.colors.hoverBlue };
         color: ${ p => p.theme.colors.black };
@@ -79,6 +75,7 @@ const Link = styled.a<ILinkTagProps>`
     font-size: 32px;
     line-height: 28px;
     color: ${ p => p.theme.colors.primaryBlue };
+    
     transition: 0.3s linear;
     
     &:hover {
@@ -100,7 +97,6 @@ const Link = styled.a<ILinkTagProps>`
         color: ${ p => p.theme.colors.activeGreen };
     }
 `;
-
 
 export const Button = ( {
                             active = false,
