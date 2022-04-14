@@ -1,7 +1,5 @@
 import React from "react";
-
 import styled, { css } from "styled-components";
-
 
 interface IIconTagProps {
     borderRadius: number;
@@ -19,7 +17,6 @@ interface IIconComponentProps {
     onClick: (e: React.MouseEvent<HTMLElement>) => void;
     disabled?: boolean;
 };
-
 
 const Container = styled.div`
   margin: 0 auto 50px;
@@ -55,7 +52,7 @@ const IconSmall = styled.i<IIconTagProps>`
           background-color: ${ p => p.theme.colors.disabledOrange };
         }
   ` };
-`
+`;
 
 export const Icon = ({
                          name = "",
@@ -73,6 +70,7 @@ export const Icon = ({
             return onClick( e );
         }
     };
+
     return (
         <Container>
             <IconSmall
@@ -84,5 +82,5 @@ export const Icon = ({
                 disabled = { disabled }>
             </IconSmall>
         </Container>
-    )
+    );
 };
