@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import './index.css';
 import App from './App';
-
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { themes } from "./styled-components/themes";
 
@@ -49,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
   label {
     cursor: pointer;
   }
-`
+`;
 
 ReactDOM.render(
     <ThemeProvider theme = { themes }>
