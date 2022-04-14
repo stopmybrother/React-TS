@@ -1,7 +1,5 @@
 import React from "react";
-
 import styled from "styled-components";
-
 import { useState } from "react";
 
 interface ICheckboxComponent {
@@ -49,7 +47,6 @@ const HiddenCheckbox = styled.input<IInputCheckboxTagProps>`
 
 const WatchedCheckbox = styled.svg<ISvgPseudoCheckboxProps>`
   display: inline-block;
-  
   margin-right: 7px;
   width: 20px;
   height: 20px;
@@ -62,7 +59,6 @@ const WatchedCheckbox = styled.svg<ISvgPseudoCheckboxProps>`
     border-color: ${ p => p.theme.colors.secondaryGray };
     background-color: ${ p => p.theme.colors.secondaryYellow };
   }
-  
   &.active {
     box-shadow: 0 0 6px 3px ${ p => p.theme.colors.translucentBlackThirty };
     border-color: ${ p => p.theme.colors.primaryGray };
@@ -73,7 +69,6 @@ const WatchedCheckbox = styled.svg<ISvgPseudoCheckboxProps>`
 const Path = styled.path<ISvgPathProps>`
   stroke-width: 2;
 `;
-
 
 export const Checkbox = ({
                             type = "",
@@ -105,5 +100,5 @@ export const Checkbox = ({
                 Lucky checkbox
             </Label>
         </Container>
-    )
+    );
 };
