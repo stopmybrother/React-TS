@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components";
 
 interface IImageTagProps {
@@ -50,8 +49,7 @@ export const Image = ({
                 src = { src }
                 width = { width }
             >
-
             </Img>
         </Container>
-    )
+    );
 };
