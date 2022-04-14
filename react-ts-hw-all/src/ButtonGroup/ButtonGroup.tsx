@@ -1,26 +1,20 @@
 import React from "react";
-
 import styled from "styled-components";
-
 
 interface IFlexBoxProps {
     alignItems: string;
-    className: string;
     flexDirection: string;
     justifyContent: string;
 };
 
 interface IButtonTagProps {
-    borderRadius: number;
-    className: string;
+    borderRadius?: number;
 };
 
 interface IButtonGroupComponentProps {
     vertical?: boolean;
     children: React.ReactNode[] | null;
-    className: string;
 };
-
 
 const FlexBox = styled.div<IFlexBoxProps>`
     margin: 0 auto 50px;
@@ -32,7 +26,7 @@ const FlexBox = styled.div<IFlexBoxProps>`
     row-gap: 15px;
 `;
 
-const ButtonInButtonGroup = styled.button<IButtonTagProps>`
+export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     max-width: 118px;
     width: 100%;
     padding: 47px 35px;
@@ -42,6 +36,7 @@ const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     color: ${ p => p.theme.colors.translucentBlack };
     font-size: 16px;
     line-height: 20px;
+  
     transition: 0.3s linear;
 
     &:hover:enabled {
@@ -54,18 +49,15 @@ const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     }
 `;
 
-
 export const ButtonGroup = ({
                                 vertical = false,
                                 children = null,
-                                className = "",
                             }: IButtonGroupComponentProps) => {
 
     const Buttons = children !== null && children.map( ( button, index ) => {
         return (
             <ButtonInButtonGroup
                 borderRadius = { 50 }
-                className = { `${ className } btn` }
             >
                 btn { index + 1 }
             </ButtonInButtonGroup>
@@ -76,7 +68,6 @@ export const ButtonGroup = ({
     return (
         <>
             <FlexBox
-                className = { className }
                 flexDirection = { vertical ? "column" : "row" }
                 justifyContent = { "space-between" }
                 alignItems = { "center" }
