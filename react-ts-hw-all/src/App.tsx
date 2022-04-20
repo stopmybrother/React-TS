@@ -6,23 +6,25 @@ import { ButtonGroup, ButtonInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Image } from "./Image/Image";
+import GetResponse from "./Hoc/Preloader";
+// import Routing from "./Routing/Routing";
+// import HOCApp from "./Routing/ToggleButtonHOC";
 
 interface IWrapper {
     backGroundColor?: string;
 };
 
 const Wrapper = styled.div<IWrapper>`
-  background-color: ${ p => p.backGroundColor };
+  padding: 100px;
   max-width: 100%;
   min-height: 100vh;
-  padding: 100px;
+  background-color: ${ p => p.backGroundColor };
 `;
 
 const App = () => {
   return (
       <Wrapper backGroundColor = { COLOR.magicMint }>
           <Button
-              className = "btn"
               onClick = { (e: React.MouseEvent<HTMLButtonElement>) => {} }
               type = "button"
               >
@@ -42,17 +44,19 @@ const App = () => {
               onClick = { (e: React.MouseEvent<HTMLElement>) => {} }
           />
 
-          <Checkbox
-              type = "checkbox"
-          />
+          <Checkbox />
 
           <Image
-              className = "image"
               src = { require( "./../src/Image/svg/Stitch-sit.png" ) }
               alt = "Stitch"
               width = { 150 }
               height = { 150 }
           />
+
+          <GetResponse />
+
+          {/*<Routing />*/}
+          {/*<HOCApp />*/}
       </Wrapper>
   );
 };
