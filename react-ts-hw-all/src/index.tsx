@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
   
   input {
     cursor: pointer;
+    outline: none;
   }
   
   label {
