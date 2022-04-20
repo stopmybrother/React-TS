@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import Container from "../styled-components/containerDefault";
 
 interface IIconTagProps {
     borderRadius: number;
@@ -17,11 +18,6 @@ interface IIconComponentProps {
     onClick: (e: React.MouseEvent<HTMLElement>) => void;
     disabled?: boolean;
 };
-
-const Container = styled.div`
-  margin: 0 auto 50px;
-  padding: 0 16px;
-`;
 
 const IconSmall = styled.i<IIconTagProps>`
   padding: 45px;
