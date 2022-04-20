@@ -9,24 +9,41 @@ export const COLOR: Record<string, string> = {
 
     white: "#FFF",
 
+    veryDarkPurple: "#231e3a",
+    purple: "#443b67",
+
+    veryDarkBlue: "#162534",
+    paleDarkBlue: "#273441",
+    veryPaleDarkBlue: "#2a3948",
+    darkBlue: "#30506e",
+
+    brightBlue: "#0dc0e8",
+    activeBlue: "#33A9DEFF",
     primaryBlue: "#53A3D7FF",
     hoverBlue: "#94C9DEFF",
-    activeBlue: "#33A9DEFF",
     disabledBlue: "#B5C9D3FF",
 
+
+    mint: "#05b28a",
+    brightMint: "#1fe8b6",
+    paleMint: "#59bb9b",
+    lightMint: "#8af3d9",
+    veryLightMint: "#8df5da",
     magicMint: "#AAF1DAFF",
 
+    activeGreen: "#13C239FF",
     primaryGreen: "#42C95FFF",
     hoverGreen: "#6EC782FF",
-    activeGreen: "#13C239FF",
 
+    activePink: "#DA3EDDFF",
     primaryPink: "#D666D8FF",
     hoverPink: "#DE8AE0FF",
-    activePink: "#DA3EDDFF",
 
+    softPink: "#ee8f8f",
+
+    activeOrange: "#ec841e",
     primaryOrange: "#EFA55BFF",
     hoverOrange: "#e7b582",
-    activeOrange: "#ec841e",
     disabledOrange: "#817d79",
 
     primaryYellow: "#eee31d",
