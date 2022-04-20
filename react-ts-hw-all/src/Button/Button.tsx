@@ -1,34 +1,27 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import Container from "../styled-components/containerDefault";
 import { TButtonComponentStyle, TLink } from './button-types';
 
 interface IButtonTagProps {
     borderRadius: number;
-    className: string;
     disabled: boolean;
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    type: TButtonComponentStyle;
+    active: boolean;
 };
 
 interface ILinkTagProps {
-    className: string;
+    active: boolean;
     href: string;
 };
 
 interface IButtonComponentProps {
     active?: boolean;
     children: string;
-    className: string;
     disabled?: boolean;
     href?: string;
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
     type: TButtonComponentStyle;
 };
-
-const ContainerForBtnOrLink = styled.div`
-  margin: 0 auto 50px;
-  padding: 0 16px;
-`;
 
 const Btn = styled.button<IButtonTagProps>`
     margin: 0 auto;
@@ -52,18 +45,18 @@ const Btn = styled.button<IButtonTagProps>`
         color: ${ p => p.theme.colors.black };
     }
 
-    &.active {
+    ${p => p.active && css`
         background-color: ${ p => p.theme.colors.primaryGreen };
-    }
-    &.active:hover:enabled {
-        background-color: ${ p => p.theme.colors.hoverGreen };
-        color: ${ p => p.theme.colors.black };
-    }
-    &.active:active:enabled {
-        transition: 0s linear;
-        background-color: ${ p => p.theme.colors.activeGreen };
-        color: ${ p => p.theme.colors.black };
-    }
+        &:hover:enabled {
+          background-color: ${ p => p.theme.colors.hoverGreen };
+          color: ${ p => p.theme.colors.black };
+        }
+        &:active:enabled {
+          transition: 0s linear;
+          background-color: ${ p => p.theme.colors.activeGreen };
+          color: ${ p => p.theme.colors.black };
+        }
+    `}
 
     ${p => p.disabled && css`
         background-color: ${ p => p.theme.colors.disabledBlue };
@@ -86,22 +79,23 @@ const Link = styled.a<ILinkTagProps>`
         color: ${ p => p.theme.colors.activeBlue };
     }
 
-    &.active {
-        color: ${ p => p.theme.colors.primaryGreen };
-    }
-    &.active:hover {
-        color: ${ p => p.theme.colors.hoverGreen };
-    }
-    &.active:active {
-        transition: 0s linear;
-        color: ${ p => p.theme.colors.activeGreen };
-    }
+    ${p => p.active && css`
+        background-color: ${ p => p.theme.colors.primaryGreen };
+            &:hover {
+              background-color: ${ p => p.theme.colors.hoverGreen };
+              color: ${ p => p.theme.colors.black };
+            }
+            &:active {
+              transition: 0s linear;
+              background-color: ${ p => p.theme.colors.activeGreen };
+              color: ${ p => p.theme.colors.black };
+            }
+        `}
 `;
 
 export const Button = ( {
                             active = false,
                             children = "Default button",
-                            className = "",
                             disabled = false,
                             href = "#",
                             onClick = () => {},
@@ -121,18 +115,18 @@ export const Button = ( {
 
     return (
         <>
-            <ContainerForBtnOrLink>
+            <Container>
                 {isLink ? (
                     <Link
-                        className = { `link ${active ? "active" : ""}` }
+                        active = { active }
                         href = { href }
                     >
                         { children }
                     </Link>
                 ) : (
                     <Btn
+                        active = { active }
                         borderRadius = { 10 }
-                        className = { `${className} ${active ? "active" : ""}` }
                         disabled = { disabled }
                         onClick = { handleClick }
                         type = { type as Exclude<TButtonComponentStyle, TLink> }
@@ -140,7 +134,7 @@ export const Button = ( {
                         { children }
                     </Btn>
                 )};
-            </ContainerForBtnOrLink>
+            </Container>
         </>
     );
 };
