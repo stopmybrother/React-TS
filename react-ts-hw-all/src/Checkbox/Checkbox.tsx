@@ -1,15 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Container from "../styled-components/containerDefault";
 import { useState } from "react";
-
-interface ICheckboxComponent {
-    type: string;
-};
-
-interface IInputCheckboxTagProps {
-    type: string;
-    onChange: (e: React.ChangeEventHandler<HTMLInputElement>) => void;
-};
 
 interface ISvgPseudoCheckboxProps {
     className: string;
@@ -22,11 +14,6 @@ interface ISvgPathProps {
     stroke: string;
 };
 
-const Container = styled.div`
-  margin: 0 auto 50px;
-  padding: 0 16px;
-`;
-
 const Label = styled.label`
   position: relative;
   display: flex;
@@ -35,7 +22,7 @@ const Label = styled.label`
   width: 100%;
 `;
 
-const HiddenCheckbox = styled.input<IInputCheckboxTagProps>`
+const HiddenCheckbox = styled.input.attrs( { type: "checkbox" } )`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -70,9 +57,7 @@ const Path = styled.path<ISvgPathProps>`
   stroke-width: 2;
 `;
 
-export const Checkbox = ({
-                            type = "",
-                         }: ICheckboxComponent) => {
+export const Checkbox = () => {
 
     const [isChecked, setIsChecked] = useState( false );
 
@@ -80,7 +65,6 @@ export const Checkbox = ({
         <Container>
             <Label>
                 <HiddenCheckbox
-                    type = { type }
                     onChange = {
                         () => {
                             setIsChecked( !isChecked );
