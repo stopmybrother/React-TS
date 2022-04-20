@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import Container from "../styled-components/containerDefault";
 
 interface IImageTagProps {
     alt: string;
-    className: string;
+    borderRadius: number;
     height: number;
     src: string;
     width: number;
@@ -12,30 +13,20 @@ interface IImageTagProps {
 interface IImageComponentProps {
     alt: string;
     circle?: boolean;
-    className: string;
     height: number;
     src: string;
     width: number;
 };
 
-const Container = styled.div`
-  margin: 0 auto 50px;
-  padding: 0 16px;
-`;
-
 const Img = styled.img<IImageTagProps>`
   width: ${ p => p.width }px;
   height: ${ p => p.height }px;
-  
-  &.rounded {
-    border-radius: 50%;
-  }
+  border-radius: ${ p => p.borderRadius }%;
 `;
 
 export const Image = ({
                         alt = "image",
                         circle = false,
-                        className = "",
                         height = 100,
                         src = "",
                         width = 100,
@@ -44,7 +35,7 @@ export const Image = ({
         <Container>
             <Img
                 alt = { alt }
-                className = { `${ className } ${ circle ? "rounded" : "" }` }
+                borderRadius = { circle ? 50 : 0 }
                 height = { height }
                 src = { src }
                 width = { width }
