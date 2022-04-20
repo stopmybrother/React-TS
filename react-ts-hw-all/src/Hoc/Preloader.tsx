@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 import styled, { css } from "styled-components";
-import { LoaderHOC } from "./LoadingHOC/LoadingHoc";
+import { LoaderHOC } from "./LoaderHOC/LoaderHoc";
 
 interface IAppComponentUIProps {
     readonly data: Record<string, any>;
 };
-
-interface IAppComponentUIState {};
 
 const FlexBox = styled.div`
   padding: 5px 15px 5px 25px;
@@ -18,18 +16,18 @@ const FlexBox = styled.div`
   flex-direction: row;
   justify-content: space-between;
   column-gap: 20px;
-  background-color: #30506e;
-  border: 1px solid #2a3948;
+  background-color: ${ p => p.theme.colors.darkBlue };
+  border: 1px solid ${ p => p.theme.colors.paleDarkBlue };
   border-radius: 10px;
-  box-shadow: 0 0 10px 3px #273441;
+  box-shadow: 0 0 10px 3px ${ p => p.theme.colors.veryPaleDarkBlue };
 `;
 
 const Button = styled.button`
   font-size: 25px;
-  color: #1fe8b6;
+  color: ${ p => p.theme.colors.brightMint };
   padding: 20px 50px;
   background-color: transparent;
-  border: 3px solid #1fe8b6;
+  border: 3px solid ${ p => p.theme.colors.brightMint };
   position: relative;
   transition: all .5s linear;
 
@@ -61,8 +59,8 @@ const Button = styled.button`
   }
 
   &:active {
-    color: #8af3d9;
-    border-color: #8df5da;
+    color: ${ p => p.theme.colors.lightMint };
+    border-color: ${ p => p.theme.colors.veryLightMint };
   }
   
   ${ p => p.disabled && css`
@@ -77,15 +75,15 @@ const P = styled.p`
   max-width: 200px;
   width: 100%;
   min-height: 70px;
-  border: 1px solid #443b67;
+  border: 1px solid ${ p => p.theme.colors.purple };
   border-radius: 10px;
-  background-color: #59bb9b;
-  color: #231e3a;
+  background-color: ${ p => p.theme.colors.paleMint };
+  color: ${ p => p.theme.colors.veryDarkPurple };
   text-transform: uppercase;
   text-align: right;
 `;
 
-const AppComponentUI = ( props: IAppComponentUIState & IAppComponentUIProps ) => {
+const AppComponentUI = ( props: IAppComponentUIProps ) => {
     return (
             <P>
                 { props?.data.data.title }
@@ -95,18 +93,16 @@ const AppComponentUI = ( props: IAppComponentUIState & IAppComponentUIProps ) =>
 
 const AppComponent = LoaderHOC( "data" )( AppComponentUI );
 
-const GetFuckingData = ( ) => {
+const GetResponse = () => {
     const [ post, setPost ] = useState( {} );
-    // const [ loading, setLoading ] = useState( false );  // want to 
+    // const [ loading, setLoading ] = useState( false ); // wanted to send a request on button-click (don't know how to transfer loading-state in HOC)
 
     useEffect( () => {
-
         axios
             .get<AxiosResponse>( "https://jsonplaceholder.typicode.com/posts/1" )
             .then( (data) => {
                 setTimeout( () => {
                     // setLoading( false );
-                    console.log( data );
                     setPost( data );
                 }, 5000);
             })
@@ -120,7 +116,7 @@ const GetFuckingData = ( ) => {
         <>
             <FlexBox>
                 <Button
-                    // disabled = { loading ? true : false }
+                    // disabled = { loading }
                     // onClick = { () => { setLoading( true ) } }
                     // type = "button"
                 >
@@ -133,4 +129,4 @@ const GetFuckingData = ( ) => {
     );
 };
 
-export default GetFuckingData;
+export default GetResponse;
