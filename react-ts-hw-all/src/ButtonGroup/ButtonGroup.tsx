@@ -20,10 +20,9 @@ const FlexBox = styled.div<IFlexBoxProps>`
     margin: 0 auto 50px;
     padding: 0 16px;
     display: flex;
-    flex-direction: ${ p => p.flexDirection };
-    justify-content: ${ p => p.justifyContent };
-    align-items: ${ p => p.alignItems };
-    gap: 15px;
+    flex-direction: ${ p => p.flexDirection || "row" };
+    justify-content: ${ p => p.justifyContent || "space-between" };
+    align-items: ${ p => p.alignItems || "center" };
 `;
 
 export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
@@ -50,14 +49,10 @@ export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
 `;
 
 export const ButtonGroup = styled( FlexBox )<IButtonGroupComponentProps>`
-  justify-content: space-between;
-  align-items: center;
-    ${ p => p.vertical ?
+    ${ p => p.vertical &&
         css`
             flex-direction: column;
-        ` :
-        css`
-            flex-direction: row;
+            row-gap: 15px;
         `
      }
 `;
