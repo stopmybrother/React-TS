@@ -6,7 +6,7 @@ import { ButtonGroup, ButtonInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Image } from "./Image/Image";
-import GetResponse from "./Hoc/Preloader";
+// import GetResponse from "./Hoc/Preloader";
 // import Routing from "./Routing/Routing";
 // import HOCApp from "./Routing/ToggleButtonHOC";
 
@@ -32,9 +32,9 @@ const App = () => {
           </Button>
 
           <ButtonGroup>
-              <ButtonInButtonGroup />
-              <ButtonInButtonGroup />
-              <ButtonInButtonGroup />
+              <ButtonInButtonGroup borderRadius = { 50 } >btn 1</ButtonInButtonGroup>
+              <ButtonInButtonGroup borderRadius = { 50 } >btn 2</ButtonInButtonGroup>
+              <ButtonInButtonGroup borderRadius = { 50 } >btn 2</ButtonInButtonGroup>
           </ButtonGroup>
 
           <Icon
@@ -53,7 +53,7 @@ const App = () => {
               height = { 150 }
           />
 
-          <GetResponse />
+          {/*<GetResponse />*/}
 
           {/*<Routing />*/}
           {/*<HOCApp />*/}
