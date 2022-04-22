@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface IFlexBoxProps {
-    alignItems: string;
-    flexDirection: string;
-    justifyContent: string;
+    alignItems?: string;
+    flexDirection?: string;
+    justifyContent?: string;
 };
 
 interface IButtonTagProps {
@@ -23,7 +23,7 @@ const FlexBox = styled.div<IFlexBoxProps>`
     flex-direction: ${ p => p.flexDirection };
     justify-content: ${ p => p.justifyContent };
     align-items: ${ p => p.alignItems };
-    row-gap: 15px;
+    gap: 15px;
 `;
 
 export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
@@ -49,31 +49,15 @@ export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     }
 `;
 
-export const ButtonGroup = ({
-                                vertical = false,
-                                children = null,
-                            }: IButtonGroupComponentProps) => {
-
-    const Buttons = children !== null && children.map( ( button, index ) => {
-        return (
-            <ButtonInButtonGroup
-                borderRadius = { 50 }
-            >
-                btn { index + 1 }
-            </ButtonInButtonGroup>
-            )
-        }
-    );
-
-    return (
-        <>
-            <FlexBox
-                flexDirection = { vertical ? "column" : "row" }
-                justifyContent = { "space-between" }
-                alignItems = { "center" }
-            >
-                { Buttons }
-            </FlexBox>
-        </>
-    )
-};
+export const ButtonGroup = styled( FlexBox )<IButtonGroupComponentProps>`
+  justify-content: space-between;
+  align-items: center;
+    ${ p => p.vertical ?
+        css`
+            flex-direction: column;
+        ` :
+        css`
+            flex-direction: row;
+        `
+     }
+`;
