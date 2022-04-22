@@ -6,6 +6,7 @@ import { ButtonGroup, ButtonInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Image } from "./Image/Image";
+import { IconSVG } from "./IconSVG/IconSVG";
 // import GetResponse from "./Hoc/Preloader";
 // import Routing from "./Routing/Routing";
 // import HOCApp from "./Routing/ToggleButtonHOC";
@@ -41,6 +42,12 @@ const App = () => {
               name = "kiwi-bird"
               className = "fa fa-"
               size = { 50 }
+              onClick = { (e: React.MouseEvent<HTMLElement>) => {} }
+          />
+
+          <IconSVG
+              width = { 40 }
+              height = { 40 }
               onClick = { (e: React.MouseEvent<HTMLElement>) => {} }
           />
 
