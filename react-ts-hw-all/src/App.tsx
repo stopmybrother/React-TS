@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { COLOR } from "./styled-components/color-constants";
+import { CommonWrapper } from "./styled-components/common-components/wrappers-and-containers/CommonWrapper";
 import { Button } from './Button/Button';
 import { ButtonGroup, ButtonInButtonGroup } from './ButtonGroup/ButtonGroup';
 import { Icon } from './Icon/Icon';
@@ -11,20 +11,13 @@ import { IconSVG } from "./IconSVG/IconSVG";
 // import Routing from "./Routing/Routing";
 // import HOCApp from "./Routing/ToggleButtonHOC";
 
-interface IWrapper {
-    backGroundColor?: string;
-};
-
-const Wrapper = styled.div<IWrapper>`
-  padding: 100px;
-  max-width: 100%;
-  min-height: 100vh;
-  background-color: ${ p => p.backGroundColor };
-`;
-
 const App = () => {
   return (
-      <Wrapper backGroundColor = { COLOR.magicMint }>
+      <CommonWrapper
+          paddingTop = { 100 }
+          paddingBottom={ 100 }
+          backGroundColor = { COLOR.magicMint }
+      >
           <Button
               onClick = { (e: React.MouseEvent<HTMLButtonElement>) => {} }
               type = "button"
@@ -32,7 +25,9 @@ const App = () => {
               Click me !
           </Button>
 
-          <ButtonGroup>
+          <ButtonGroup
+            justifyContent = "space-between"
+          >
               <ButtonInButtonGroup borderRadius = { 50 } >btn 1</ButtonInButtonGroup>
               <ButtonInButtonGroup borderRadius = { 50 } >btn 2</ButtonInButtonGroup>
               <ButtonInButtonGroup borderRadius = { 50 } >btn 2</ButtonInButtonGroup>
@@ -64,7 +59,7 @@ const App = () => {
 
           {/*<Routing />*/}
           {/*<HOCApp />*/}
-      </Wrapper>
+      </CommonWrapper>
   );
 };
 
