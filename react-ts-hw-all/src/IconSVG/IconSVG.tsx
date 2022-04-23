@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Container from "../styled-components/containerDefault";
+import { CommonContainer } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 import { ICONS } from "./IconSVGconstant";
 
 interface ILinkProps {
@@ -38,7 +38,7 @@ export const IconSVG = ({
 
     return (
         <>
-            <Container>
+            <CommonContainer>
                 <ILinkTag
                     width = { width }
                     height = { height }
@@ -52,7 +52,7 @@ export const IconSVG = ({
                         />
                     </IconSVGComponent>
                 </ILinkTag>
-            </Container>
+            </CommonContainer>
         </>
     );
 };
