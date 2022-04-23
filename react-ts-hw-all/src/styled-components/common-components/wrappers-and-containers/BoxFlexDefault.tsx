@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { CommonSizeBox } from "./Box";
+import { CommonSizeBox } from "./BoxDefault";
 
 type TFlexDirectionTypes =
     "row"
@@ -35,7 +35,7 @@ interface IFlexBoxProps {
     alignItems?: TAlignItemsTypes;
 };
 
-export const FlexBox = styled( CommonSizeBox )<IFlexBoxProps>`
+export const BoxFlexDefault = styled( CommonSizeBox )<IFlexBoxProps>`
   display: flex;
   flex-direction: ${ p => p.flexDirection || "row" };
   flex-wrap: ${ p => p.flexWrap || "nowrap" };
