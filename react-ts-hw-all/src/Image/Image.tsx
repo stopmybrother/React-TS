@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Container from "../styled-components/containerDefault";
+import { CommonContainer } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 
 interface IImageTagProps {
     alt: string;
@@ -19,6 +19,8 @@ interface IImageComponentProps {
 };
 
 const Img = styled.img<IImageTagProps>`
+  display: block;
+  margin: 0 auto;
   width: ${ p => p.width }px;
   height: ${ p => p.height }px;
   border-radius: ${ p => p.borderRadius }%;
@@ -32,7 +34,7 @@ export const Image = ({
                         width = 100,
                       }: IImageComponentProps) => {
     return (
-        <Container>
+        <CommonContainer>
             <Img
                 alt = { alt }
                 borderRadius = { circle ? 50 : 0 }
@@ -41,6 +43,6 @@ export const Image = ({
                 width = { width }
             >
             </Img>
-        </Container>
+        </CommonContainer>
     );
 };
