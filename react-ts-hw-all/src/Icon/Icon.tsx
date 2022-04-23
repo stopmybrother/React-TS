@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Container from "../styled-components/containerDefault";
+import { CommonContainer } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 
 interface IIconTagProps {
     borderRadius: number;
@@ -20,7 +20,10 @@ interface IIconComponentProps {
 };
 
 const IconSmall = styled.i<IIconTagProps>`
-  padding: 45px;
+  display: block;
+  margin: 0 auto;
+  width: 90px;
+  height: 90px;
   position: relative;
   border: 1px solid ${ p => p.theme.colors.black };
   border-radius: ${ p => p.borderRadius }%;
@@ -68,7 +71,7 @@ export const Icon = ({
     };
 
     return (
-        <Container>
+        <CommonContainer>
             <IconSmall
                 name = { name }
                 className = { `${ className }${ name }` }
@@ -77,6 +80,6 @@ export const Icon = ({
                 borderRadius = { 50 }
                 disabled = { disabled }>
             </IconSmall>
-        </Container>
+        </CommonContainer>
     );
 };
