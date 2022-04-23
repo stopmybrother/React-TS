@@ -24,7 +24,6 @@ export const themes = {
         hoverBlue: "#94C9DEFF",
         disabledBlue: "#B5C9D3FF",
 
-
         mint: "#05b28a",
         brightMint: "#1fe8b6",
         paleMint: "#59bb9b",
@@ -59,4 +58,4 @@ export const themes = {
         desktop: '(max-width: 1800)',
         bigDesktop: '(max-width: 2400px)',
     }
-}
+};
