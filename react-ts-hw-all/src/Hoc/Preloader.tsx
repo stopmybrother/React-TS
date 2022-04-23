@@ -2,18 +2,19 @@ import React, { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 import styled, { css } from "styled-components";
 import { LoaderHOC } from "./LoaderHOC/LoaderHoc";
+import { CommonContainer, CommonContainerFlexBox } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 
 interface IAppComponentUIProps {
     readonly data: Record<string, any>;
 };
 
-const FlexBox = styled.div`
-  padding: 5px 15px 5px 25px;
+const Container = styled(CommonContainerFlexBox)`
+  padding-top: 5px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  padding-left: 25px;
   min-height: 150px;
-  display: flex;
-  align-items: center;
   align-content: center;
-  flex-direction: row;
   justify-content: space-between;
   column-gap: 20px;
   background-color: ${ p => p.theme.colors.darkBlue };
@@ -114,17 +115,23 @@ const GetResponse = () => {
 
     return (
         <>
-            <FlexBox>
-                <Button
-                    // disabled = { loading }
-                    // onClick = { () => { setLoading( true ) } }
-                    // type = "button"
-                >
-                    Get data
-                </Button>
+            <CommonContainer
+                marginBottom = { 50 }
+                paddingRight = { 16 }
+                paddingLeft = { 16 }
+            >
+                <Container>
+                    <Button
+                        // disabled = { loading }
+                        // onClick = { () => { setLoading( true ) } }
+                        // type = "button"
+                    >
+                        Get data
+                    </Button>
 
-                <AppComponent data = { post } />
-            </FlexBox>
+                    <AppComponent data = { post } />
+                </Container>
+            </CommonContainer>
         </>
     );
 };
