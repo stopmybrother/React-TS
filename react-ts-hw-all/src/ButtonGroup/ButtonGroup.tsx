@@ -1,11 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-
-interface IFlexBoxProps {
-    alignItems?: string;
-    flexDirection?: string;
-    justifyContent?: string;
-};
+import { CommonContainerFlexBox } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 
 interface IButtonTagProps {
     borderRadius?: number;
@@ -15,15 +10,6 @@ interface IButtonGroupComponentProps {
     vertical?: boolean;
     children: React.ReactNode[] | null;
 };
-
-const FlexBox = styled.div<IFlexBoxProps>`
-    margin: 0 auto 50px;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: ${ p => p.flexDirection || "row" };
-    justify-content: ${ p => p.justifyContent || "space-between" };
-    align-items: ${ p => p.alignItems || "center" };
-`;
 
 export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     max-width: 118px;
@@ -48,11 +34,11 @@ export const ButtonInButtonGroup = styled.button<IButtonTagProps>`
     }
 `;
 
-export const ButtonGroup = styled( FlexBox )<IButtonGroupComponentProps>`
+export const ButtonGroup = styled( CommonContainerFlexBox )<IButtonGroupComponentProps>`
     ${ p => p.vertical &&
         css`
             flex-direction: column;
             row-gap: 15px;
         `
-     }
+     };
 `;
