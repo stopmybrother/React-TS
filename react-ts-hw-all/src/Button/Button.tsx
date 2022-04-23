@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Container from "../styled-components/containerDefault";
+import { CommonContainer } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 import { TButtonComponentStyle, TLink } from './button-types';
 
 interface IButtonTagProps {
@@ -115,7 +115,7 @@ export const Button = ( {
 
     return (
         <>
-            <Container>
+            <CommonContainer>
                 {isLink ? (
                     <Link
                         active = { active }
@@ -134,7 +134,7 @@ export const Button = ( {
                         { children }
                     </Btn>
                 )}
-            </Container>
+            </CommonContainer>
         </>
     );
 };
