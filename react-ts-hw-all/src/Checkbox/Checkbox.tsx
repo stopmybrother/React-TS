@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Container from "../styled-components/containerDefault";
+import { CommonContainer } from "../styled-components/common-components/wrappers-and-containers/CommonContainer";
 import { useState } from "react";
 
 interface ISvgPseudoCheckboxProps {
@@ -62,7 +62,7 @@ export const Checkbox = () => {
     const [isChecked, setIsChecked] = useState( false );
 
     return (
-        <Container>
+        <CommonContainer>
             <Label>
                 <HiddenCheckbox
                     onChange = {
@@ -83,6 +83,6 @@ export const Checkbox = () => {
                     </WatchedCheckbox>
                 Lucky checkbox
             </Label>
-        </Container>
+        </CommonContainer>
     );
 };
