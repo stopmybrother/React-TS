@@ -39,14 +39,16 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     cursor: pointer;
   }
-  
-  input {
+
+  label {
+    display: block;
     cursor: pointer;
-    outline: none;
   }
   
-  label {
+  input {
+    display: block;
     cursor: pointer;
+    outline: none;
   }
 `;
 
