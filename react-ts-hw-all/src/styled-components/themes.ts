@@ -27,6 +27,7 @@ export const themes = {
         mint: "#05b28a",
         brightMint: "#1fe8b6",
         paleMint: "#59bb9b",
+        magicDarkMint: "#66c9a9",
         lightMint: "#8af3d9",
         veryLightMint: "#8df5da",
         magicMint: "#AAF1DAFF",
