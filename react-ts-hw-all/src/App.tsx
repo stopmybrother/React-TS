@@ -7,7 +7,8 @@ import { Icon } from './Icon/Icon';
 import { Checkbox } from "./Checkbox/Checkbox";
 import { Image } from "./Image/Image";
 import { IconSVG } from "./IconSVG/IconSVG";
-// import GetResponse from "./Hoc/Preloader";
+import GetResponse from "./Hoc/Preloader";
+import Input from "./Input/Input";
 // import Routing from "./Routing/Routing";
 // import HOCApp from "./Routing/ToggleButtonHOC";
 
@@ -15,7 +16,7 @@ const App = () => {
   return (
       <CommonWrapper
           paddingTop = { 100 }
-          paddingBottom={ 100 }
+          paddingBottom = { 100 }
           backGroundColor = { COLOR.magicMint }
       >
           <Button
@@ -55,7 +56,11 @@ const App = () => {
               height = { 150 }
           />
 
-          {/*<GetResponse />*/}
+          <GetResponse />
+
+          <Input
+              id = { 1 }
+          />
 
           {/*<Routing />*/}
           {/*<HOCApp />*/}
