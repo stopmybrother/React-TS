@@ -5,7 +5,6 @@ import { useState } from "react";
 
 interface ISvgPseudoCheckboxProps {
     className: string;
-    ariaHidden: boolean;
     viewBox: string;
 };
 
@@ -73,7 +72,6 @@ export const Checkbox = () => {
                 />
                     <WatchedCheckbox
                         className = { `checkbox ${ isChecked ? "active" : "" }` }
-                        ariaHidden = { true }
                         viewBox = "0 0 15 11"
                     >
                         <Path
